@@ -110,7 +110,9 @@ jobs:
     - name: Download kernel source
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
-        git clone ${{ env.KERNEL_SOURCE }} -b ${{ env.KERNEL_SOURCE_BRANCH }} android-kernel --depth=1
+        wget https://github.com/Smile246/mtk/releases/download/mtk/q2q.tar.gz
+        mkdir android-kernel
+        tar -zxvf q2q.tar.gz -C $PWD/android-kernel --strip-components 1
 
     - name: Download source boot image
       if: env.BUILD_BOOT_IMG == 'true'
